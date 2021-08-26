@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Tours page</title>
+</head>
+<body>
+	<h1>List of available tours</h1>
+
+	<div>
+		<table th:if="${!tours.empty}">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Code</th>
+					<th>Continent</th>
+					<th>Date</th>
+					<th>Duration</th>
+					<th>All Inclusive</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tour : ${tours}">
+					<td th:text="${tour.name}"></td>
+					<td th:text="${tour.code}"></td>
+					<td th:text="${tour.continent}"></td>
+					<td th:text="${tour.date}"></td>
+					<td th:text="${tour.duration}"></td>
+					<td th:text="${tour.allInclusive}"></td>
+				</tr>
+			</tbody>
+
+		</table>
+		<span th:if="${tours.empty}">No tours in the offer</span>
+	</div>
+
+
+	<p>
+		<a th:href="@{/}">Back</a>
+	</p>
+</body>
+</html>
