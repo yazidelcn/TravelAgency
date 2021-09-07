@@ -4,49 +4,88 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Form page</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+	crossorigin="anonymous">
 </head>
 <body>
-	<h1>Add new tour</h1>
 
-	<form action="#" th:action="@{/processForm}" th:object="${tour}"
-		method="post">
-		<div>
-			<div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-			<label>Name</label> <input type="text" th:field="*{name}">
-		</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm"></div>
+			<div class="col-sm">
+				<h1>Add new tour</h1>
 
-		<div>
-			<div style="color: red" th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></div>
-			<label>Code</label> <input type="text" th:field="*{code}">
-		</div>
+				<form action="#" th:action="@{/processForm}" th:object="${tour}"
+					method="post">
+					<div class="form-group">
+						<label>Name</label>
+						<div class="alert alert-danger" role="alert"
+							th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+						<input class="form-control" type="text" th:field="*{name}">
+					</div>
 
-		<div>
-			<label>Continent</label> <select name="continent">
-				<option
-					th:each="continent : ${T(main.models.Tour.Continent).values()}"
-					th:value="${continent}" th:text="${continent}"></option>
-			</select>
-		</div>
+					<div class="form-group">
+						<label>Code</label>
+						<div class="alert alert-danger" role="alert"
+							th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></div>
+						<input class="form-control" type="text" th:field="*{code}">
+					</div>
 
-		<div>
-			<div style="color: red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div>
-			<label>Date</label> <input type="date" th:field="*{date}">
-		</div>
+					<div class="form-group">
+						<label>Continent</label> <select name="continent"
+							class="form-control">
+							<option
+								th:each="continent : ${T(main.models.Tour.Continent).values()}"
+								th:value="${continent}" th:text="${continent}"></option>
+						</select>
+					</div>
 
-		<div>
-			<div style="color: red" th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></div>
-			<label>Duration</label> <input type="number" th:field="*{duration}">
-		</div>
+					<div class="form-group">
+						<label>Date</label>
+						<div class="alert alert-danger" role="alert"
+							th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div>
+						<input type="date" th:field="*{date}" class="form-control">
+					</div>
 
-		<div>
-			<label>All Inclusive</label> <input type="checkbox"
-				th:field="*{allInclusive}">
+					<div class="form-group">
+						<label>Duration</label>
+						<div class="alert alert-danger" role="alert"
+							th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></div>
+						<input type="number" th:field="*{duration}" class="form-control">
+					</div>
+
+					<div class="form-group">
+						<label>All Inclusive</label> <input type="checkbox"
+							th:field="*{allInclusive}" class="form-control">
+					</div>
+
+					<div class="form-row">
+						<div class="col">
+							<input class="btn btn-success" type="submit" value="submit">
+						</div>
+
+						<div class="col">
+							<a th:href="@{/}" class="btn btn-warning float-right">Back</a>
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="col-sm"></div>
 		</div>
-		
-		<div>
-			<input type="submit" value="submit">
-		</div>
-		
-	</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+		integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+		crossorigin="anonymous"></script>
 </body>
 </html>

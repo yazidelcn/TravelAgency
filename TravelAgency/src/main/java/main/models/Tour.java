@@ -18,22 +18,22 @@ public class Tour {
 		AFRICA, ASIA, EUROPE, NORTH_AMERICA, SOUTH_AMERICA;
 	}
 
-	@NotBlank(message = "Tour name can not be null")
-	@Size(min = 5, message = "Name should have at least 5 characters")
+	@NotBlank(message = "{tour.name.blank}")
+	@Size(min = 5, message = "{tour.name.size}")
 	private String name;
 
-	@Pattern(regexp = "^[a-zA-Z]{2}-[0-9]{2}[a-zA-Z]{1}$", message = "Expected format is CC-DDC where C stands for character and D stands for digit")
+	@Pattern(regexp = "^[a-zA-Z]{2}-[0-9]{2}[a-zA-Z]{1}$", message = "{tour.code.pattern}")
 	private String code;
 
 	private Continent continent;
 
-	@NotNull(message = "Please select the date")
-	@Future(message = "Date should be form the future")
+	@NotNull(message = "{tour.date.notnull}")
+	@Future(message = "{tour.date.future}")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
 
-	@Min(value = 7, message = "Must be between 7 and 21")
-	@Max(value = 21, message = "Must be between 7 and 21")
+	@Min(value = 7, message = "{tour.duration}")
+	@Max(value = 21, message = "{tour.duration}")
 	private int duration;
 	private boolean allInclusive = false;
 
