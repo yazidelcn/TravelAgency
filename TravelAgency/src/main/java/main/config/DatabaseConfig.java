@@ -17,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @EnableWebMvc
 @ComponentScan("main")
-@PropertySource("WEB-INF/resources/database.properties")
+@PropertySource("/WEB-INF/resources/database.properties")
 public class DatabaseConfig {
 	@Autowired
 	private Environment environment;
