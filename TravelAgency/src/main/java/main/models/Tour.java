@@ -4,6 +4,11 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -11,13 +16,15 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
+@Entity
 public class Tour {
 
 	public enum Continent {
 		AFRICA, ASIA, EUROPE, NORTH_AMERICA, SOUTH_AMERICA;
 	}
-
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
 	@NotBlank(message = "{tour.name.blank}")
 	@Size(min = 5, message = "{tour.name.size}")
 	private String name;
@@ -35,6 +42,7 @@ public class Tour {
 	@Min(value = 7, message = "{tour.duration}")
 	@Max(value = 21, message = "{tour.duration}")
 	private int duration;
+	@Column(name="all_inclusive")
 	private boolean allInclusive = false;
 
 	public String getName() {
