@@ -44,6 +44,14 @@ public class Tour {
 	private int duration;
 	@Column(name="all_inclusive")
 	private boolean allInclusive = false;
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
