@@ -27,8 +27,7 @@ public class TourDAOImpl implements TourDAO {
 	@Transactional
 	public Tour getById(Long id) {
 		Session session = sessionFactory.getCurrentSession();
-		session.get(Tour.class, id);
-		return null;
+		return session.get(Tour.class, id);
 	}
 
 	@Override

@@ -1,52 +1,16 @@
 package main.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import main.dao.TourDAO;
-import main.models.Tour;
 
 @Controller
 public class HomeController {
-	@Autowired
-	private TourDAO tourRepository;
+
 	
 	@RequestMapping("/")
 	public String getHome() {
 		return "home";
 	}
 	
-	@GetMapping("/addTour")
-	public String showForm(Model model) {
-		model.addAttribute("tour", new Tour());
-		return "form";
-	}
-	
-	@PostMapping("/processForm")
-	public String showFormData(@Valid @ModelAttribute Tour tour, BindingResult bindingResult) {
-		
-		if(bindingResult.hasErrors()) {
-			return "form";
-		}
-		tourRepository.saveOrUpdate(tour);
-		return "redirect:showOffer";
-	}
-	
-	@GetMapping("/showOffer")
-	public String getTours(Model model) {
-		List<Tour> tours = tourRepository.findAll();
-		model.addAttribute("tours", tours);
-		return "tours";
-	}
 }
