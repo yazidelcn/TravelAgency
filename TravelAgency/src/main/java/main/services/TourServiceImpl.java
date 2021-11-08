@@ -2,12 +2,15 @@ package main.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import main.dao.TourDAO;
 import main.models.Tour;
 @Service
+@Transactional
 public class TourServiceImpl implements TourService{
 	@Autowired
 	private TourDAO tourDAO;
