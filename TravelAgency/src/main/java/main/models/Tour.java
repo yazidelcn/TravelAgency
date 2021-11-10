@@ -107,5 +107,11 @@ public class Tour {
 	public void setAllInclusive(boolean allInclusive) {
 		this.allInclusive = allInclusive;
 	}
-
+	
+	public TourDetails getTourDetails() {
+		return tourDetails;
+	}
+	public void setTourDetails(TourDetails tourDetails) {
+		this.tourDetails = tourDetails;
+	}
 }
