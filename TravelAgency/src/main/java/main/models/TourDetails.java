@@ -17,8 +17,10 @@ public class TourDetails {
 	private String country;
 	@Column(length = 2000)
 	private String description;
+	
+	/*for bidirectional 
 	@OneToOne(mappedBy = "tourDetails")
-	private Tour tour;
+	private Tour tour;*/
 	public Long getId() {
 		return id;
 	}
@@ -37,12 +39,12 @@ public class TourDetails {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Tour getTour() {
+	/*public Tour getTour() {
 		return tour;
 	}
 	public void setTour(Tour tour) {
 		this.tour = tour;
 	}
-	
+	*/
 	
 }
