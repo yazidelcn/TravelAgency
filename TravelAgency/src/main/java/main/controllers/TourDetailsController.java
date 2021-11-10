@@ -22,7 +22,7 @@ public class TourDetailsController {
 	
 	@GetMapping("/showTourDetails/{tourId}")
 	public String showTourDetails(@PathVariable Long tourId, Model model) {
-		Tour tour = tourService.getById(tourId);
+		Tour tour = tourService.tourByIdWithComments(tourId);
 		if(tour != null) {
 			tourService.addTourDetailsIfNotExist(tour);
 			model.addAttribute("tour", tour);

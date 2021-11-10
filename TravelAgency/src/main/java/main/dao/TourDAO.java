@@ -9,4 +9,5 @@ public interface TourDAO {
 	public Tour getById(Long id);
 	public void saveOrUpdate(Tour tour);
 	public void delete(Long id);
+	public Tour tourByIdWithComments(Long id);
 }

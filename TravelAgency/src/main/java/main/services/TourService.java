@@ -10,5 +10,6 @@ public interface TourService {
 	public void saveOrUpdate(Tour tour);
 	public void delete(Long id);
 	public void addTourDetailsIfNotExist(Tour tour);
+	public Tour tourByIdWithComments(Long id);
 
 }

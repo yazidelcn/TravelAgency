@@ -39,5 +39,13 @@ public class TourDAOImpl implements TourDAO {
 		Tour selectedTour= getById(id);
 		session.delete(selectedTour);
 	}
+	@Override
+	public Tour tourByIdWithComments(Long id) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.createQuery("from Tour t left join fetch t.comments where t.id = :id", Tour.class)
+				.setParameter("id", id).getSingleResult();
+
+	}
+	
 
 }

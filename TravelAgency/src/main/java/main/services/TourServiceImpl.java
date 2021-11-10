@@ -44,5 +44,10 @@ public class TourServiceImpl implements TourService{
 			tourDAO.saveOrUpdate(tour);
 		}
 	}
+	
+	@Override
+	public Tour tourByIdWithComments(Long id) {
+		return tourDAO.tourByIdWithComments(id);
+	}
 
 }
