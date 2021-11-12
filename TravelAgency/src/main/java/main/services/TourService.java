@@ -11,5 +11,6 @@ public interface TourService {
 	public void delete(Long id);
 	public void addTourDetailsIfNotExist(Tour tour);
 	public Tour tourByIdWithComments(Long id);
+	public void addUserToTour(Long tourId, Long userId);
 
 }
