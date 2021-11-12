@@ -8,46 +8,45 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.dao.TourDAO;
-import main.dao.UserDAO;
 import main.models.Tour;
-import main.models.TourDetails;
 import main.models.User;
+import main.repository.TourRepository;
+import main.repository.UserRepository;
 @Service
 @Transactional
 public class TourServiceImpl implements TourService{
 	@Autowired
-	private TourDAO tourDAO;
+	private TourRepository tourRepository;
 	
 	@Autowired 
-	private UserDAO userDAO;
+	private UserRepository userRepository;
 	
 	@Override
 	public List<Tour> findAll() {
-		return tourDAO.findAll();
+		return tourRepository.findAll();
 	}
 
 	@Override
 	public Tour getById(Long id) {
-		return tourDAO.getById(id);
+		return tourRepository.findById(id).get();
 	}
 
 	@Override
 	public void saveOrUpdate(Tour tour) {
-		tourDAO.saveOrUpdate(tour);
+		tourRepository.save(tour);
 		
 	}
 
 	@Override
 	public void delete(Long id) {
-		tourDAO.delete(id);
+		tourRepository.deleteById(id);
 	}
 
 	
 	@Override
 	public Tour tourByIdWithComments(Long id) {
-		return tourDAO.tourByIdWithComments(id);
-	}
+		return  tourRepository.tourByIdWithComments(id);
+		}
 	
 	@Override
 	public void addUserToTour(Long tourId, Long userId) {
@@ -56,7 +55,7 @@ public class TourServiceImpl implements TourService{
 			tour.setUsers(new ArrayList<>());
 		}
 		
-		User user = userDAO.getById(userId);
+		User user = userRepository.findById(userId).get();
 		if(user != null) {
 		tour.getUsers().add(user);
 		saveOrUpdate(tour);

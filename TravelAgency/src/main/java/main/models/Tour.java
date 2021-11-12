@@ -56,7 +56,7 @@ public class Tour {
 	@JoinColumn(name = "tour_details_id")
 	private TourDetails tourDetails;
 	
-	@OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "tour", cascade = CascadeType.ALL)
 	private List<Comment> comments;
 	@ManyToMany
 	@JoinTable(name = "users_tours", 

@@ -5,28 +5,28 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.dao.TourDetailsDAO;
 import main.models.TourDetails;
+import main.repository.TourDetailsRepository;
 
 @Service
 @Transactional
 public class TourDetailsServiceImpl implements TourDetailsService {
 	@Autowired
-	private TourDetailsDAO tourDetailsRepository;
+	private TourDetailsRepository tourDetailsRepository;
 
 	@Override
 	public TourDetails getById(Long id) {
-		return tourDetailsRepository.getById(id);
+		return tourDetailsRepository.findById(id).get();
 	}
 
 	@Override
 	public void saveOrUpdate(TourDetails tourDetails) {
-		tourDetailsRepository.saveOrUpdate(tourDetails);
+		tourDetailsRepository.save(tourDetails);
 	}
 
 	@Override
 	public void delete(Long id) {
-		tourDetailsRepository.delete(id);
+		tourDetailsRepository.deleteById(id);
 	}
 	
 	

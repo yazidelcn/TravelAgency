@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan("main")
 @PropertySource("/WEB-INF/resources/database.properties")
 @EnableTransactionManagement
+@EnableJpaRepositories("main.repository")
 public class DatabaseConfig {
 	@Autowired
 	private Environment environment;
@@ -35,7 +37,7 @@ public class DatabaseConfig {
 		return dataSource;
 	}
 	
-	@Bean
+	@Bean(name = "entityManagerFactory")
 	public LocalSessionFactoryBean sessionFactoryBean() {
 		LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
 		localSessionFactoryBean.setDataSource(getDataSource());
@@ -52,8 +54,7 @@ public class DatabaseConfig {
 		return properties;
 	}
 	
-	
-	@Bean
+	@Bean(name = "transactionManager")
 	public HibernateTransactionManager getTransactionManager() {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
 		transactionManager.setSessionFactory(sessionFactoryBean().getObject());
