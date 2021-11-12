@@ -43,13 +43,6 @@ public class TourServiceImpl implements TourService{
 		tourDAO.delete(id);
 	}
 
-	@Override
-	public void addTourDetailsIfNotExist(Tour tour) {
-		if (tour.getTourDetails() == null) {
-			tour.setTourDetails(new TourDetails());
-			tourDAO.saveOrUpdate(tour);
-		}
-	}
 	
 	@Override
 	public Tour tourByIdWithComments(Long id) {

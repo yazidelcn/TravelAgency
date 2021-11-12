@@ -64,6 +64,10 @@ public class Tour {
 			   inverseJoinColumns = @JoinColumn(name="user_id"))
 	private List<User> users;
 	
+	public Tour() {
+		setTourDetails(new TourDetails());
+	}
+	
 	public Long getId() {
 		return id;
 	}
