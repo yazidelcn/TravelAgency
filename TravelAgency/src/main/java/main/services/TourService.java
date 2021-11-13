@@ -11,5 +11,6 @@ public interface TourService {
 	public void delete(Long id);
 	public Tour tourByIdWithComments(Long id);
 	public void addUserToTour(Long tourId, Long userId);
+	public List<Tour> getAllForNextMonth();
 
 }

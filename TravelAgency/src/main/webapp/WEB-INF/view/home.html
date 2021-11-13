@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="ISO-8859-1">
 <title>Home page</title>
@@ -16,10 +17,29 @@
 
 		
 			<a th:href="@{/addTour}" class="btn btn-primary">Add a new tour</a>
-		
 			<a th:href="@{/showOffer}" class="btn btn-primary">Show our offer</a>
-			
+			<a th:href="@{/showNetxMonthOffer}" class="btn btn-primary">Show Next Month offer</a>
 			<a th:href="@{/addComment}" class="btn btn-primary">Add comment</a>
+			<a sec:authorize="isAnonymous()" th:href="@{/login}" class="btn btn-secondary">Login</a>
+			<a sec:authorize="!isAnonymous()" th:href="@{/logout}" class="btn btn-secondary">Logout</a>
+			
+			<br>
+			<br>
+			
+			<div class="border border-success">
+				<div class="bg-primary text-white" sec:authorize="hasRole('ADMIN')">Part visible to the ADMIN</div>
+			    <div class="bg-secondary text-white" sec:authorize="hasRole('EMPLOYEE')">Part visible to the EMPLOYEE</div>
+		    	<div class="bg-warning text-black" sec:authorize="hasRole('CLIENT')">Part visible to the CLIENT</div>
+				<div class="bg-info text-white" sec:authorize="isAuthenticated()">Part visible to authenticated Users</div>
+			    <div>
+			    	Username : <span sec:authentication="name"></span>
+			    </div>
+				<div>
+				   User roles : <span sec:authorize="isAuthenticated()">
+				   					<span sec:authentication="principal.authorities"></span>
+				   				</span>
+				</div>
+			</div>	
 		
 	</div>
 

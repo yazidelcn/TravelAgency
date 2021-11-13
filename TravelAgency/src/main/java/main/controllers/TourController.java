@@ -72,5 +72,12 @@ public class TourController {
 		tourService.addUserToTour(id, userId);
 		return "redirect:/showOffer";
 	}
+	
+	@GetMapping("/showNetxMonthOffer")
+	public String showNetxMonthOffer(Model model) {
+		List<Tour> nextMonth = tourService.getAllForNextMonth();
+		model.addAttribute("tours", nextMonth);
+		return "tours";
+	}
 
 }

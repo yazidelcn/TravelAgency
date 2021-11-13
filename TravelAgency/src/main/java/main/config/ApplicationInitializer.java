@@ -6,8 +6,7 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		// TODO Auto-generated method stub
-		return null;
+		return  new Class[] {SecurityConfig.class};
 	}
 
 	@Override
