@@ -9,5 +9,10 @@ public class LoginController {
 	public String showLoginForm() {
 		return "login";
 	} 
+	
+	@GetMapping("/forbidden")
+	public String showForbidden(){
+		return "403";
+	}
 
 }
