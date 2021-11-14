@@ -3,11 +3,8 @@ package main.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import main.models.User;
-
+import main.models.Role;
 @Repository
-public interface UserRepository  extends JpaRepository<User, Long>{
-	
-	public boolean existsByLogin(String login);
-	
+public interface RoleRepository extends JpaRepository<Role, Long>{
+
 }
